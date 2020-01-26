@@ -1,5 +1,7 @@
 import java.util.Scanner;
 public class Account {
+	
+	private AccountDatabase accountList = new AccountDatabase();
 
 	private static int id = 1000;
 	private String username;
@@ -8,10 +10,13 @@ public class Account {
 	private int attempts = 3; //password attempts
 	private boolean validInput; //validation bool
 	
+	public Account(){}
+
 	public Account(String username, String password)
 	{
 		this.username = username;
 		this.password = password;
+		accountList.addAccount(this);
 		id++;
 	}
 	
@@ -71,6 +76,28 @@ public class Account {
 		this.password = newPassword;
 	}
 	
+	/*
+	 * GETTER AND SETTER METHODS
+	 * */
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	//Object to String method
+	@Override
 	public String toString()
 	{
 		return "ID: " + this.id + "| User: " + this.username + "| Pass: " + this.password;
